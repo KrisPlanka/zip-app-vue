@@ -3,17 +3,11 @@
 This is a simple Single Page Application (SPA) that allows users to search for information about their city and state based on their ZIP code (USA ZIP codes only). In addition to displaying city and state information, the app captures IP address, User Agent data, and HTTP Referer and UTM tags if the user comes from an outside source.
 
 ## Demo
-You can try the live demo here:
+[You can try the live demo here:](https://krisplanka.github.io/zip-app-vue/)
 
-``` console
- https://krisplanka.github.io/zip-app-vue/
-```
 
-Demo with UTM parameters: 
+[Demo with UTM parameters:](https://krisplanka.github.io/zip-app-vue/?utm_source=github&utm_medium=link&utm_campaign=test)
 
-``` console
-https://krisplanka.github.io/zip-app-vue/?utm_source=github&utm_medium=link&utm_campaign=test
-```
 
 ## Technology Stack
 - Front-end: Vue.js, Bootstrap 5
