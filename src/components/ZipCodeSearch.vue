@@ -4,29 +4,38 @@
     <div class="row justify-content-center">
       <div class="col-12 card p-3" style="width: 18rem">
         <div class="input-form mb-3">
-      <div class="mb-3">
-        <label for="zip-code" class="form-label text-dark h5">Enter your ZIP-code:</label>
-        <input class="form-control" type="text" id="zip-code" v-model="zipCode" />
+          <div class="mb-3">
+            <label for="zip-code" class="form-label text-dark h5">Enter your ZIP-code:</label>
+            <input
+              class="form-control"
+              maxlength="5"
+              type="text"
+              id="zip-code"
+              v-model="zipCode"
+              pattern="[0-9]*"
+            />
+          </div>
+          <button class="btn btn-warning" @click="fetchData">Show info</button>
       </div>
-      <button class="btn btn-warning" @click="fetchData">Show info</button>
-    </div>
+      <div v-if="results">
+        <div class="text-body">
+          <p class="card-text"><b>State:</b> {{ results.state }}</p>
+          <p class="card-text"><b>City:</b> {{ results.city }}</p>
 
-    <div v-if="results">
-      <div class="text-body">
-        <p class="card-text"><b>State:</b> {{ results.state }}</p>
-        <p class="card-text"><b>City:</b> {{ results.city }}</p>
-
-        <div v-if="ipData">
-          <p class="card-text"><b>IP-address:</b> {{ ipData.ip }}</p>
-          <p class="card-text"><b>User Agent:</b> {{ getUserAgent() }}</p>
-          <p v-if="utm" class="card-text"><b>UTM:</b> {{ utm }}</p>
+          <div v-if="ipData">
+            <p class="card-text"><b>IP-address:</b> {{ ipData.ip }}</p>
+            <p class="card-text"><b>User Agent:</b> {{ getUserAgent() }}</p>
+            <p v-if="utm" class="card-text"><b>UTM:</b> {{ utm }}</p>
+          </div>
         </div>
+        <button class="btn btn-primary mt-3" @click="clearData">Close</button>
       </div>
-      <button class="btn btn-primary mt-3" @click="clearData">Back to home</button>
-    </div>
-
+      <div v-if="error !== ''">
+        <p class="text-danger small">{{ error }}</p>
+        <button class="btn btn-primary mt-3" @click="clearData">Close</button>
       </div>
     </div>
+  </div>
   </div>
 </template>
 
@@ -38,6 +47,7 @@ export default {
       results: null,
       ipData: null,
       utm: null,
+      error: "",
     };
   },
   methods: {
@@ -49,6 +59,7 @@ export default {
       this.results = null,
       this.ipData = null,
       this.utm = null;
+      this.error = "";
     },
     getUtmParameters() {
       const queryString = window.location.search;
@@ -79,7 +90,7 @@ export default {
           this.getUtmParameters();
         } else {
           this.results = null;
-          alert("Failed to find data for the entered ZIP code");
+          this.error = "Failed to find data for the entered ZIP code"
         }
       } catch (error) {
         console.error("Error fetching data:", error);
