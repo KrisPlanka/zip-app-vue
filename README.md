@@ -28,7 +28,7 @@ The flow of the app is as follows:
 
 ## Installation
 
-1. Clone CRUD_APP:
+1. Clone zip-app-vue:
 ``` console
 https://github.com/KrisPlanka/zip-app-vue.git
 ```
