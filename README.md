@@ -1,29 +1,48 @@
-# zip-app-vue
+# USA ZIP Code Lookup SPA
 
-This template should help get you started developing with Vue 3 in Vite.
+This is a simple Single Page Application (SPA) that allows users to search for information about their city and state based on their ZIP code (USA ZIP codes only). In addition to displaying city and state information, the app captures IP address, User Agent data, and HTTP Referer and UTM tags if the user comes from an outside source.
 
-## Recommended IDE Setup
+## Demo
+You can try the live demo here:
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+``` console
+ https://krisplanka.github.io/zip-app-vue/
+```
 
-## Customize configuration
+Demo with UTM parameters: 
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+``` console
+https://krisplanka.github.io/zip-app-vue/?utm_source=github&utm_medium=link&utm_campaign=test
+```
 
-## Project Setup
+## Technology Stack
+- Front-end: Vue.js, Bootstrap 5
+- API: Free public APIs for ZIP code and IP data
 
-```sh
+## Usage
+The flow of the app is as follows:
+
+1. The user enters their ZIP code into the input field and presses the "Render" button.
+2. The app requests data based on the entered ZIP code.
+3. The app displays the requested data, including city, state, IP address, and User Agent.
+
+## Installation
+
+1. Clone CRUD_APP:
+``` console
+https://github.com/KrisPlanka/zip-app-vue.git
+```
+
+2. Type following commands:
+``` console
 npm install
 ```
 
-### Compile and Hot-Reload for Development
-
-```sh
+3. Run npm start
+``` console
 npm run dev
 ```
 
-### Compile and Minify for Production
+## Limitations
+Please note that this app is designed to work only with USA ZIP codes.
 
-```sh
-npm run build
-```
